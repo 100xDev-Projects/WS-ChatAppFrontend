@@ -12,7 +12,7 @@ const Message = ({ label }: { label: string }) => {
 
 function App() {
   const [socket, setSocket] = useState<WebSocket | null>(null);
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState<string[]>(["hero","hello"]);
   const [sendMessage, setSendMessage] = useState<string>("");
 
   useEffect(() => {
@@ -54,11 +54,11 @@ function App() {
   }
   return (
     <div className="w-full h-screen bg-black p-10">
-      <div className="w-1/2 h-full mx-auto border border-slate-100/30">
+      <div className="w-1/2 h-full mx-auto border border-slate-100/30 flex flex-col">
         <h1 className="border-b border-slate-100/30 text-white w-full text-3xl p-2">
           Chat App
         </h1>
-        <div className="flex flex-col h-[84vh]">
+        <div className="flex flex-col flex-1 min-h-0">
           <div className="flex-1 overflow-y-scroll flex flex-col justify-end">
             {messages.map((message, index) => (
               <Message key={index} label={message} />
